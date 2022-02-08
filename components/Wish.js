@@ -6,7 +6,6 @@ import * as linking from 'expo-linking';
 import { LinkPreview } from '@flyerhq/react-native-link-preview'
 
 const Wish = (props) => {
-    console.log(props)
     return (
         <TouchableOpacity
             onLongPress={() => props.edit(props)}
@@ -18,11 +17,16 @@ const Wish = (props) => {
                 renderText={(t) => null}
                 renderTitle={(t) => null}
                 renderDescription={(d) => null}
-                renderImage={(i) => <View><Image style={{ width: 30, height: 30 }} source={{ uri: i.url }} /></View>}
+                renderImage={(i) => <View><Image style={{ width: 30, height: 30, borderRadius: 30, borderColor: 'black', borderWidth: 1 }} source={{ uri: i.url }} /></View>}
                 containerStyle={{
-                    height: 20,
-                    marginTop: -30,
+                    height: 30,
+                    width: 30,
+                    position: 'absolute',
+                    top: -30,
+                    bottom: 0,
+                    right: 20,
                 }}
+                style={styles.img}
             />
             <View style={styles.info}>
                 <Text style={globals.h2}>{props.title}</Text>
@@ -43,6 +47,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         marginVertical: 2,
+        maxWidth: 500,
     },
     info: {
         flexDirection: 'column',

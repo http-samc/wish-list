@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, Text, View, TextInput } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, Platform, View, TextInput, KeyboardAvoidingView } from 'react-native';
 import React from 'react';
 import { auth, firestore, firebase } from '../firebase';
 import { useNavigation } from '@react-navigation/native';
@@ -63,7 +63,6 @@ const List = () => {
                 url,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             }
-            console.log(doc.id)
             await firestore.collection(`${auth.currentUser.uid}`).doc(doc.id).update(newWish)
             getWishes()
             setTitle('')
@@ -102,7 +101,7 @@ const List = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={globals.h1}>{displayName}'s Wish List.</Text>
+            <Text style={globals.h1}>{displayName}'s Wish List 📝</Text>
             <TouchableOpacity
                 style={styles.newWish}
                 onPress={
@@ -147,7 +146,9 @@ const List = () => {
                 onBackdropPress={toggleBottomSheet}
             >
                 <View style={styles.bottomSheet}>
-                    <View>
+                    <KeyboardAvoidingView
+                        behavior={(Platform.OS == "ios" ? "padding" : undefined)}
+                    >
                         <Text style={globals.h2}>{doc ? 'Edit Wish' : 'Create Wish'}</Text>
                         <View style={styles.inputContainer}>
                             <TextInput
@@ -195,7 +196,7 @@ const List = () => {
                                 </TouchableOpacity>
                             ) : null
                         }
-                    </View>
+                    </KeyboardAvoidingView>
                 </View>
             </BottomSheet>
             <TouchableOpacity
@@ -230,6 +231,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#87ceeb',
         padding: 10,
         borderRadius: 50,
+        borderColor: '#000',
+        borderWidth: 1
     },
     wishContainer: {
         marginVertical: 15,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput } from 'react-native';
+import { StyleSheet, Text, Platform, View, KeyboardAvoidingView, TextInput } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import globals from '../global';

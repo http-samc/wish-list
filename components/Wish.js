@@ -5,9 +5,10 @@ import { TouchableOpacity } from 'react-native';
 import * as linking from 'expo-linking';
 
 const Wish = (props) => {
+    console.log(props)
     return (
         <TouchableOpacity
-            onLongPress={() => props.edit(props.id)}
+            onLongPress={() => props.edit(props)}
             onPress={() => linking.openURL(props.url)}
             style={styles.container}
         >

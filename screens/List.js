@@ -75,6 +75,18 @@ const List = () => {
         }
     }
 
+    const deleteWish = async () => {
+        try {
+            await firestore.collection(`${auth.currentUser.uid}`).doc(doc.id).delete()
+            getWishes()
+            setTitle('')
+            setDesc('')
+            setUrl('')
+            toggleBottomSheet()
+        } catch (error) {
+            alert(error.message)
+        }
+    }
 
 
     useEffect(() => { getWishes() }, [loading])
@@ -96,6 +108,9 @@ const List = () => {
                 onPress={
                     () => {
                         setDoc(null)
+                        setTitle('')
+                        setDesc('')
+                        setUrl('')
                         toggleBottomSheet()
                     }
                 }
@@ -115,9 +130,9 @@ const List = () => {
                                 edit={
                                     (props) => {
                                         setDoc(props)
-                                        setTitle(doc.title)
-                                        setDesc(doc.desc)
-                                        setUrl(doc.url)
+                                        setTitle(props.title)
+                                        setDesc(props.desc)
+                                        setUrl(props.url)
                                         toggleBottomSheet()
                                     }}
                             />
@@ -170,6 +185,16 @@ const List = () => {
                         >
                             <Text>Submit</Text>
                         </TouchableOpacity>
+                        {
+                            doc ? (
+                                <TouchableOpacity
+                                    onPress={deleteWish}
+                                    style={styles.submit}
+                                >
+                                    <Text>Delete</Text>
+                                </TouchableOpacity>
+                            ) : null
+                        }
                     </View>
                 </View>
             </BottomSheet>

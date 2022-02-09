@@ -232,7 +232,8 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 50,
         borderColor: '#000',
-        borderWidth: 1
+        borderWidth: 1,
+        marginBottom: 10,
     },
     wishContainer: {
         marginVertical: 15,

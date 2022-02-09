@@ -230,6 +230,7 @@ const styles = StyleSheet.create({
     },
     container: {
         width: '100%',
+        borderRadius: 10,
         maxWidth: 400,
         height: '100%',
         flexDirection: 'column',

@@ -192,7 +192,7 @@ const List = () => {
                     <TouchableOpacity
                         onPress={() => {
                             auth.signOut()
-                            navigation.navigate('Auth')
+                            navigation.navigate('Authenticate - Wish List')
                         }}
                         style={styles.newWish}
                     >

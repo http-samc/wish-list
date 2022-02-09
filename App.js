@@ -14,8 +14,8 @@ export default function App() {
       <Stack.Navigator
         initialRouteName='Auth'
       >
-        <Stack.Screen options={{ headerShown: false }} name="Auth" component={Auth} />
-        <Stack.Screen options={{ headerShown: false }} name="List" component={List} />
+        <Stack.Screen options={{ headerShown: false }} name="Authenticate - Wish List" component={Auth} />
+        <Stack.Screen options={{ headerShown: false }} name="Wish List" component={List} />
       </Stack.Navigator>
       <StatusBar style="dark" />
     </NavigationContainer>

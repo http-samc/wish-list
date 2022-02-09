@@ -22,7 +22,7 @@ const Auth = () => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
-                navigation.replace("List")
+                navigation.replace("Wish List")
             }
         })
 

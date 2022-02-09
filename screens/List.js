@@ -102,20 +102,6 @@ const List = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={globals.h1}>{displayName}'s Wish List 📝</Text>
-            <TouchableOpacity
-                style={styles.newWish}
-                onPress={
-                    () => {
-                        setDoc(null)
-                        setTitle('')
-                        setDesc('')
-                        setUrl('')
-                        toggleBottomSheet()
-                    }
-                }
-            >
-                <AntDesign name="plus" size={24} color="black" />
-            </TouchableOpacity>
             <ScrollView style={styles.wishContainer} contentContainerStyle={styles.wishWrapper}>
                 {wishes.length > 0
                     ? (wishes.map((wish, idx) => {
@@ -199,15 +185,32 @@ const List = () => {
                     </KeyboardAvoidingView>
                 </View>
             </BottomSheet>
-            <TouchableOpacity
-                onPress={() => {
-                    auth.signOut()
-                    navigation.navigate('Auth')
-                }}
-                style={styles.submit}
-            >
-                <Text>Log Out</Text>
-            </TouchableOpacity>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', width: '100%' }}>
+                <TouchableOpacity
+                    onPress={() => {
+                        auth.signOut()
+                        navigation.navigate('Auth')
+                    }}
+                    style={styles.newWish}
+                >
+                    <AntDesign name="export2" size={24} color="black" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.newWish}
+                    onPress={
+                        () => {
+                            setDoc(null)
+                            setTitle('')
+                            setDesc('')
+                            setUrl('')
+                            toggleBottomSheet()
+                        }
+                    }
+                >
+                    <AntDesign name="plus" size={24} color="black" />
+                </TouchableOpacity>
+            </View>
+
         </SafeAreaView >
     );
 };
@@ -217,19 +220,14 @@ export default List;
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        // maxWidth: 400,
         height: '100%',
         flexDirection: 'column',
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'space-between',
-        // padding: 20
     },
     newWish: {
-        position: 'absolute',
-        bottom: 40,
-        right: 30,
-        zIndex: 2,
+        marginRight: 10,
         backgroundColor: '#87ceeb',
         padding: 10,
         borderRadius: 50,
@@ -247,10 +245,11 @@ const styles = StyleSheet.create({
     },
     bottomSheet: {
         backgroundColor: '#fff',
-        width: 400,
-        borderTopLeftRadius: 5,
-        borderTopRightRadius: 5,
+        width: '100%',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
         padding: 15,
+        paddingBottom: 25,
         alignSelf: 'center',
     },
     inputContainer: {
@@ -276,5 +275,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderColor: '#000',
         borderWidth: 1,
+        width: '95%',
+        alignSelf: 'center',
     }
 });

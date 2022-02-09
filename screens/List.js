@@ -217,11 +217,13 @@ export default List;
 const styles = StyleSheet.create({
     container: {
         width: '100%',
+        // maxWidth: 400,
         height: '100%',
         flexDirection: 'column',
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'space-between',
+        // padding: 20
     },
     newWish: {
         position: 'absolute',
@@ -245,10 +247,11 @@ const styles = StyleSheet.create({
     },
     bottomSheet: {
         backgroundColor: '#fff',
-        //height: 300,
+        width: 400,
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
-        padding: 15
+        padding: 15,
+        alignSelf: 'center',
     },
     inputContainer: {
         flexDirection: 'column',

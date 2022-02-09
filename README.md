@@ -1,5 +1,8 @@
 # Wish List ✨
-Wish List is a clean & simple app to record wishes you want.
+Wish List is a clean & simple app to record your wishes.
+
+## User Interface 📱 🖥
+Check out [/ui](/ui/) for screenshots of Wish List on Android, iOS, and Web!
 
 ## Installation ☁️
 Wish List is available on the [Expo App Store](https://expo.dev/@http-samc/wish-list) and can be used on Android and iOS. A web version is also available at [wish.smrth.dev](https://wish.smrth.dev). Data is synced across all platforms.
